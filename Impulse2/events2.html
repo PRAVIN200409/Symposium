@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symposium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Kameron:wght@400..700&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/vermin-verile" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css" integrity="sha512-OQDNdI5rpnZ0BRhhJc+btbbtnxaj+LdQFeh0V9/igiEPDiWE2fG+ZsXl0JEH+bjXKPJ3zcXqNyP4/F/NegVdZg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+                screens: {
+                    'custom-sm': '321px',
+                    'custom-md': '768px',
+                    'custom-lg': '1024px',
+                    'custom-bar': '1138px',
+                    'custom-tab':'800px',
+                },
+                colors: {
+                    'custom-events-card':'rgba(217, 217, 217, 0.4)',
+                    'custom-events-card-nav':'rgba(90, 72, 108, 0.8)',
+                    'custom-events-card-nav-hover':'rgba(217, 217, 217, 0.5)',
+                    'custom-white': '#FFFFFF',
+                    'custom-gray': '#D9D9D9',
+                    'custom-violet': '#270944',
+                },
+                fontFamily: {
+                    greatVibes: ['Great Vibes', 'cursive'],
+                    kameron: ['Kameron', 'serif'],
+                    urbanist: ['Urbanist', 'sans-serif'],
+                },
+               
+            },
+          }
+        }
+    </script>
+    <style>
+        .event-container {
+            position: relative;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .event-container.hidden {
+            opacity: 0;
+            transform: scale(0.9);
+            pointer-events: none;
+        }
+
+        .popup {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .event-subcontainer:hover .popup {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex justify-center bg-custom-violet"> 
+        NavBar
+    </div>
+    <section>
+        <div class="2xl:container bg-custom-violet">
+            <div class="w-[90%] mx-auto pt-5 text-custom-white bg-custom-events-card grid grid-cols-1 custom-bar:grid-cols-3">
+                <div class="font-kameron tracking-widest col-span-1 flex justify-center font-bold text-[40px] items-center underline underline-offset-[8px] custom-bar:pr-[100px] custom-bar:underline-offset-[25px]">Events</div>
+                <div class="col-span-2 flex flex-col gap-y-2 justify-center items-center md:flex-row custom-tab:justify-around">
+                    <button class="font-urbanist text-sm bg-custom-events-card-nav hover:bg-custom-events-card-nav-hover duration-200 tracking-widest font-semibold border-2 border-solid rounded-2xl py-1 px-1 min-w-32" data-filter="all">ALL</button>
+                    <button class="font-urbanist text-sm bg-custom-events-card-nav hover:bg-custom-events-card-nav-hover duration-200 tracking-widest font-semibold border-2 border-solid rounded-2xl py-1 px-1 min-w-32" data-filter="technical">TECHNICAL</button>
+                    <button class="font-urbanist text-sm bg-custom-events-card-nav hover:bg-custom-events-card-nav-hover duration-200 tracking-widest font-semibold border-2 border-solid rounded-2xl py-1 px-2 min-w-32" data-filter="non-technical">NON-TECHNICAL</button>
+                    <button class="font-urbanist text-sm bg-custom-events-card-nav hover:bg-custom-events-card-nav-hover duration-200 tracking-widest font-semibold border-2 border-solid rounded-2xl py-1 px-1 min-w-32" data-filter="online">ONLINE</button>
+                    <button class="font-urbanist text-sm bg-custom-events-card-nav hover:bg-custom-events-card-nav-hover duration-200 tracking-widest font-semibold border-2 border-solid rounded-2xl py-1 px-1 min-w-32" data-filter="workshops">WORKSHOPS</button>
+                </div>
+            </div>
+
+            <div class="w-[90%] mx-auto bg-custom-events-card grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 pt-10">
+                <div class="event-container flex justify-center items-center" data-type="technical">
+                    <div class="event-subcontainer h-80 w-60 bg-white flex justify-center items-center rounded-md hover:scale-110 duration-500 hover:shadow-2xl relative">Event
+                        <div class="popup duration-300  ">Event Details 1</div>
+                    </div>
+                </div>
+                <div class="event-container flex justify-center items-center" data-type="non-technical">
+                    <div class="event-subcontainer h-80 w-60 bg-white flex justify-center items-center rounded-md hover:scale-110 duration-500 hover:shadow-2xl relative">Event
+                        <div class="popup duration-300">Event Details 2</div>
+                    </div>
+                </div>
+                <div class="event-container flex justify-center items-center" data-type="online">
+                    <div class="event-subcontainer h-80 w-60 bg-white flex justify-center items-center rounded-md hover:scale-110 duration-500 hover:shadow-2xl relative">Event
+                        <div class="popup duration-300">Event Details 3</div>
+                    </div>
+                </div>
+                <div class="event-container flex justify-center items-center" data-type="workshops">
+                    <div class="event-subcontainer h-80 w-60 bg-white flex justify-center items-center rounded-md hover:scale-110 duration-500 hover:shadow-2xl relative">Event
+                        <div class="popup duration-300">Event Details 4</div>
+                    </div>
+                </div>
+                <div class="event-container flex justify-center items-center" data-type="technical">
+                    <div class="event-subcontainer h-80 w-60 bg-white flex justify-center items-center rounded-md hover:scale-110 duration-500 hover:shadow-2xl relative">Event
+                        <div class="popup duration-300">Event Details 5</div>
+                    </div>
+                </div>
+                <div class="event-container flex justify-center items-center" data-type="non-technical">
+                    <div class="event-subcontainer h-80 w-60 bg-white flex justify-center items-center rounded-md hover:scale-110 duration-500 hover:shadow-2xl relative">Event
+                        <div class="popup duration-300">Event Details 6</div>
+                    </div>
+                </div>
+                <div class="event-container flex justify-center items-center" data-type="online">
+                    <div class="event-subcontainer h-80 w-60 bg-white flex justify-center items-center rounded-md hover:scale-110 duration-500 hover:shadow-2xl relative">Event
+                        <div class="popup duration-300">Event Details 7</div>
+                    </div>
+                </div>
+                <div class="event-container flex justify-center items-center" data-type="workshops">
+                    <div class="event-subcontainer h-80 w-60 bg-white flex justify-center items-center rounded-md hover:scale-110 duration-500 hover:shadow-2xl relative">Event
+                        <div class="popup duration-300">Event Details 8</div>
+                    </div>
+                </div>
+                <div class="event-container flex justify-center items-center" data-type="technical">
+                    <div class="event-subcontainer h-80 w-60 bg-white flex justify-center items-center rounded-md hover:scale-110 duration-500 hover:shadow-2xl relative">Event
+                        <div class="popup duration-300">Event Details 9</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="flex justify-center bg-custom-violet h-4"> 
+        Footer
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('button[data-filter]');
+            const eventContainers = document.querySelectorAll('.event-container');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.getAttribute('data-filter');
+                    eventContainers.forEach(container => {
+                        container.classList.add('hidden'); 
+                        setTimeout(() => {
+                            if (filter === 'all' || container.getAttribute('data-type') === filter) {
+                                container.style.display = 'flex'; 
+                                container.classList.remove('hidden'); 
+                            } else {
+                                container.style.display = 'none'; 
+                            }
+                        },700); 
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
